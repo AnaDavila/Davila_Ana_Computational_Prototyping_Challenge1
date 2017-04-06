@@ -51,6 +51,7 @@ void draw() {
   
 }   else if (bStart == true) {
     background(255);
+    //increments the png file as the mouse is being dragged
     for (int i = 0; i <vectors.size(); i ++) {
     brushes amazingart = vectors.get(i);
 
