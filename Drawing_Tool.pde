@@ -1,6 +1,6 @@
 ArrayList<brushes> vectors = new ArrayList<brushes>();
 //calls brushes functions from the class, and applies them to the array of images
-PImage[]imgs = new PImage [4];
+PImage[]imgs = new PImage [5];
 int pic_index = 0;
 //this sets up the boolean that will open our splash/welcome screen
 boolean bStart = false;
@@ -16,7 +16,8 @@ void setup() {
   imgs[1] = loadImage("Miro3.png");
   imgs[2] = loadImage("Miro2.png");
   imgs[3] = loadImage("Miro.png");
-  
+  imgs[4] = loadImage("Red.png");
+   
   
   for (int i = 0; i < 3; i ++) {
     imgs[i].resize(imgs[i].width/4, imgs[i].height/4);
@@ -37,7 +38,7 @@ void draw() {
     text("Hello person, click to make art",height/5.5, width/2);
     
     textSize(12);
-    text("press 1, 2, 3, 4 for different brushes",height/2.8, width/3);
+    text("press 1, 2, 3, 4, 5 for different brushes",height/2.8, width/3);
     
     textSize(12);
     text("press 's' to save and 'c' to delete",height/2.8, width/1.5);
@@ -75,16 +76,19 @@ void keyPressed() {
   if (key =='2') pic_index = 1;
   if (key =='3') pic_index = 2;
   if (key =='4') pic_index = 3;
+  if (key =='5') pic_index = 4;
    
    //By using saveFrame and allocating it to a key function we are able to save particular sketches onto our data folder
-  if (key == 's') {
+  if (key == 's'){
    saveFrame("myDrawing-######.jpg");
+  }
    
    //This particular if statement tells the sketch to clear the data once 'c' is pressed
     if (key == 'c'){
          vectors.clear();
-  }}}
+  }}
 //--------------------------------------------------------------------------------
 //mouseDragged allows us to use our vectors and images as brushes by repeating them as long as the mouse is being dragged
 void mouseDragged() {
   vectors.add(new brushes(imgs[pic_index], mouseX, mouseY));
+}
