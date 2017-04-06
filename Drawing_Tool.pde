@@ -5,7 +5,7 @@ int pic_index = 0;
 //this sets up the boolean that will open our splash/welcome screen
 boolean bStart = false;
 PFont f;
-
+//--------------------------------------------------------------------------------
 void setup() {
   //sets up permanent features of the sketch
   size(800, 800, P2D);
@@ -27,15 +27,26 @@ void setup() {
 void draw_splash_screen() {
   background(0);
 }
-
+//--------------------------------------------------------------------------------------
 //allows functions to run over the time the sketch is open
 void draw() {
   //this calls the splash screen when the sketch has been initialized
   if (bStart == false) {
     draw_splash_screen();
     textSize(32);
-    text("Hello person, click to start",height/5.5, width/2);
+    text("Hello person, click to make art",height/5.5, width/2);
+    
+    textSize(12);
+    text("press 1, 2, 3, 4 for different brushes",height/2.8, width/3);
+    
+    textSize(12);
+    text("press 's' to save and 'c' to delete",height/2.8, width/1.5);
+    
     fill(255);
+    
+    
+    
+    
   
 }   else if (bStart == true) {
     background(255);
@@ -52,11 +63,13 @@ void draw() {
   }
 }
 
-
+//--------------------------------------------------------------------------------
 void mousePressed() {
   //tells the sketch to start the other functions once the mouse has been pressed for the first time
   bStart = true;
 }
+
+//--------------------------------------------------------------------------------
 void keyPressed() {
   if (key =='1') pic_index = 0;
   if (key =='2') pic_index = 1;
@@ -71,8 +84,7 @@ void keyPressed() {
     if (key == 'c'){
          vectors.clear();
   }}}
-
+//--------------------------------------------------------------------------------
 //mouseDragged allows us to use our vectors and images as brushes by repeating them as long as the mouse is being dragged
 void mouseDragged() {
   vectors.add(new brushes(imgs[pic_index], mouseX, mouseY));
-}
